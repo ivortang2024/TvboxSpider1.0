@@ -1,11 +1,16 @@
 package com.github.catvod.utils.okhttp;
 
 import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.parser.M3u8Fix;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -34,11 +39,29 @@ public class OkHttpUtil {
                         .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                         .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                         .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                        .retryOnConnectionFailure(true)
-                        .sslSocketFactory(new SSLSocketFactoryCompat(SSLSocketFactoryCompat.trustAllCert), SSLSocketFactoryCompat.trustAllCert);
+                        .retryOnConnectionFailure(true);
+//                        .sslSocketFactory(new SSLSocketFactoryCompat(SSLSocketFactoryCompat.trustAllCert), SSLSocketFactoryCompat.trustAllCert);
+                setOkHttpSsl(builder);
                 defaultClient = builder.build();
             }
             return defaultClient;
+        }
+    }
+
+    public static synchronized void setOkHttpSsl(OkHttpClient.Builder builder) {
+        try {
+
+            final SSLSocketFactory sslSocketFactory = new com.github.catvod.utils.okhttp3.SSLSocketFactoryCompat();
+            builder.sslSocketFactory(sslSocketFactory, com.github.catvod.utils.okhttp3.SSLSocketFactoryCompat.trustAllCert);
+            HostnameVerifier unSafeHostnameVerifier = new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            };
+            builder.hostnameVerifier(unSafeHostnameVerifier);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
