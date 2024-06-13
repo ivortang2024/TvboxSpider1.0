@@ -1,5 +1,6 @@
 package com.github.catvod.crawler;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import org.json.JSONObject;
@@ -68,6 +69,17 @@ public abstract class Spider {
      * @return
      */
     public String searchContent(String key, boolean quick) {
+        return "";
+    }
+
+    /**
+     * 搜索数据内容
+     *
+     * @param key
+     * @param quick
+     * @return
+     */
+    public String searchContent(String key, boolean quick, String pg) {
         return "";
     }
 

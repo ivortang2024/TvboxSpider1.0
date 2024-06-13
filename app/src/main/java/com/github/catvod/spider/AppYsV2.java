@@ -501,7 +501,7 @@ public class AppYsV2 extends Spider {
                 return URL + "/types";
             }
         } else {
-            return "";
+            return URL;
         }
     }
 
@@ -521,7 +521,7 @@ public class AppYsV2 extends Spider {
                 return URL + "?type=";
             }
         } else {
-            return URL + "?ac=list&class=";
+            return URL + "?ac=list&t=";
         }
     }
 

@@ -3,32 +3,10 @@ package com.github.catvod.demo;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.github.catvod.crawler.Spider;
-import com.github.catvod.crawler.SpiderReq;
-import com.github.catvod.crawler.SpiderReqResult;
-import com.github.catvod.crawler.SpiderUrl;
 import com.github.catvod.spider.AppYsV2;
-import com.github.catvod.spider.Feifan;
-import com.github.catvod.spider.Proxy;
-import com.github.catvod.spider.Salad;
-import com.github.catvod.spider.XPath;
-import com.github.catvod.utils.okhttp.OkHttpUtil;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.github.catvod.spider.Mac10Api;
 
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class MainActivity extends Activity {
 
@@ -47,32 +25,14 @@ public class MainActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String url = m3u8Url3;
-                Map<String,String> params = new HashMap<>();
-                params.put("do", "m3u8");
-                params.put("url", url);
-//                String res = OkHttpUtil.string(params.get("url"), null);
-                OkHttpClient client = OkHttpUtil.defaultClient();
-                okhttp3.Request request = new Request.Builder().get()
-                        .url(Objects.requireNonNull(url)).build();
-                try {
-//                    Response response = client.newCall(request).execute();
-//                    String res = response.body().string();
-//                    String res = Proxy.fixM3u8(url, params);
-                    Object[] res = Proxy.proxy(params);
-                    System.out.println(res.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-//                Proxy proxy = new Proxy();
-//                Object[] objects = Proxy.proxy(params);
-//                Salad salad = new Salad();
-//                String s = salad.homeContent(true);
-//                System.out.println(s);
+                Mac10Api appYsV2 = new Mac10Api();
+                appYsV2.init(null, "https://ff.118318.xyz/api.php/provide/vod");
+                String res = appYsV2.homeContent(true);
+                System.out.println(res);
             }
         }).start();
     }
-
+}
 //    public void run() {
 //        AppYsV2 aidi1 = new AppYsV2();
 //        aidi1.init(MainActivity.this, "https://vipmv.co/xgapp.php/v1/");
@@ -183,4 +143,27 @@ public class MainActivity extends Activity {
 //        System.out.println(aidi.playerContent("", "11111", new ArrayList<>()));
 //        System.out.println(aidi.searchContent("陪你一起", false));
 //    }
-}
+
+
+//    String url = m3u8Url3;
+//    Map<String,String> params = new HashMap<>();
+//                params.put("do", "m3u8");
+//                        params.put("url", url);
+////                String res = OkHttpUtil.string(params.get("url"), null);
+//                        OkHttpClient client = OkHttpUtil.defaultClient();
+//                        okhttp3.Request request = new Request.Builder().get()
+//                        .url(Objects.requireNonNull(url)).build();
+//                        try {
+////                    Response response = client.newCall(request).execute();
+////                    String res = response.body().string();
+////                    String res = Proxy.fixM3u8(url, params);
+//                        Object[] res = Proxy.proxy(params);
+//                        System.out.println(res.toString());
+//                        } catch (Exception e) {
+//                        e.printStackTrace();
+//                        }
+//                Proxy proxy = new Proxy();
+//                Object[] objects = Proxy.proxy(params);
+//                Salad salad = new Salad();
+//                String s = salad.homeContent(true);
+//                System.out.println(s);

@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.os.Build;
 
 import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.utils.App;
 import com.github.catvod.utils.okhttp.OkHttpUtil;
-import com.m3u8.parser.Parser;
 import com.m3u8.parser.model.ContextType;
 import com.m3u8.parser.model.PlayList;
 import com.m3u8.parser.model.TrackData;
@@ -63,10 +63,12 @@ public class M3u8Fix {
             segment.setDiscontinuity(start);
         }
 
+        float duration = 0;
         for (int i = 0; i < len; ) {
             TrackData seg = mediaSegmentList.get(i);
             if (seg.hasDiscontinuity()) {
                 mediaSegmentList.remove(seg);
+                duration += seg.getTrackInfo().duration;
                 len--;
             } else {
                 String uri = new URI(url).resolve(seg.getUri()).toString();
@@ -74,6 +76,7 @@ public class M3u8Fix {
                 i++;
             }
         }
+        if (duration > 0.1) App.showToast(String.format("已删去广告%.1f秒.", duration));
 
     }
 

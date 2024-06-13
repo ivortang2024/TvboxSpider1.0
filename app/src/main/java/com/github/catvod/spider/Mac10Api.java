@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.crawler.SpiderDebug;
+import com.github.catvod.utils.App;
 import com.github.catvod.utils.okhttp.OkHttpUtil;
 
 import org.json.JSONArray;
@@ -18,13 +19,23 @@ import java.util.List;
  * <p>
  * Author: 群友 不负此生
  */
-public class Feifan extends Spider {
+public class Mac10Api extends Spider {
 
-    private String siteUrl = "https://ff.118318.xyz/api.php/provide/vod";
+    private String siteUrl = "";
 
     @Override
     public void init(Context context) {
-        super.init(context);
+        App.init(context);
+    }
+
+    @Override
+    public void init(Context context, String extend) {
+        App.init(context);
+        try {
+            String[] extInfos = extend.split("###");
+            siteUrl = extInfos[0];
+        } catch (Throwable ignored) {
+        }
     }
 
     private HashMap<String, String> getHeaders(String url) {
@@ -46,6 +57,7 @@ public class Feifan extends Spider {
                 if (jObj.getInt("type_pid") == 0) continue;
                 classes.put(jObj);
             }
+
 
             JSONObject result = new JSONObject();
             result.put("class", classes);
@@ -135,6 +147,18 @@ public class Feifan extends Spider {
             result.put("playUrl", "");
             result.put("url", url);
             return result.toString();
+        } catch (Exception e) {
+            SpiderDebug.log(e);
+        }
+        return "";
+    }
+
+    @Override
+    public String searchContent(String key, boolean quick, String pg) {
+        try {
+            String act = quick ? "list" : "detail";
+            String url = siteUrl + "?ac=" + act + "&pg=" + pg + "&wd=" + URLEncoder.encode(key);
+            return OkHttpUtil.string(url, getHeaders(url));
         } catch (Exception e) {
             SpiderDebug.log(e);
         }
