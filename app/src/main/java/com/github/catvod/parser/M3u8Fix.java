@@ -103,7 +103,7 @@ public class M3u8Fix {
         try {
             SpiderDebug.log("开始转http响应");
             Object[] result = new Object[3];
-            result[0] = context.length() > 0 ? 200 : 502;
+            result[0] = 200;
             result[1] = "text/plain; charset=utf-8";
             result[2] = new ByteArrayInputStream(context.getBytes("UTF-8"));
             SpiderDebug.log("转换响应完成：" + result.toString());
