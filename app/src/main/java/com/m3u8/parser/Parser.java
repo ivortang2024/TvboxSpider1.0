@@ -1,12 +1,15 @@
 package com.m3u8.parser;
 
+import com.github.catvod.crawler.SpiderDebug;
 import com.m3u8.parser.model.ContextType;
 import com.m3u8.parser.model.PlayList;
 import com.m3u8.parser.model.TrackData;
 import com.m3u8.parser.model.TrackInfo;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -110,6 +113,13 @@ public class Parser {
             }
             builder.append("#EXT-X-ENDLIST");
         }
-        return builder.toString();
+        try {
+             byte[] bytes = builder.toString().getBytes("UTF-8");
+             return new String(bytes, "UTF-8");
+        }catch(UnsupportedEncodingException e) {
+            e.printStackTrace();
+            SpiderDebug.log(e.getLocalizedMessage());
+            return "";
+        }
     }
 }
