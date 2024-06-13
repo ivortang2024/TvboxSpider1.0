@@ -9,7 +9,6 @@ import com.m3u8.parser.model.TrackInfo;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -20,37 +19,21 @@ import java.util.List;
  * @date 2024/6/12     13:50
  */
 public class Parser {
-    private final static String text = "#EXTM3U\n" +
-            "#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=3652000,RESOLUTION=1920x1080\n" +
-            "/20240125/fRYDxpXV/3652kb/hls/index.m3u8";
-    private final static String media = "#EXTM3U\n" +
-            "#EXT-X-VERSION:4\n" +
-            "#EXT-X-START:TIME-OFFSET=-4.5,PRECISE=YES\n" +
-            "#EXT-X-TARGETDURATION:10\n" +
-            "#EXTINF:9.009,\n" +
-            "http://media.example.com/first.ts\n" +
-            "#EXTINF:9.009,\n" +
-            "http://media.example.com/second.ts\n" +
-            "#EXTINF:3.003,\n" +
-            "http://media.example.com/third.ts\n" +
-            "#EXT-X-ENDLIST";
-
-    public static PlayList parse(String in, String baseUrl) throws URISyntaxException {
-        if (in == null) {
+    public static void parse(PlayList playList) throws URISyntaxException {
+        if (playList.getM3u8() == null) {
             assert false;
-            if (in.length() == 0) return null;
+            if (playList.getM3u8().length() == 0) return;
         }
-        if (in.contains("EXT-X-STREAM-INF")) {
-            return masterParse(in, baseUrl);
-        } else if (in.contains("#EXT-X-ENDLIST")) {
-            return mediaParse(in, baseUrl);
+        if (playList.getM3u8().contains("EXT-X-STREAM-INF")) {
+            masterParse(playList);
+        } else if (playList.getM3u8().contains("#EXT-X-ENDLIST")) {
+            mediaParse(playList);
         }
-        return null;
     }
 
     // 只考虑最简单的情况
-    public static PlayList masterParse(String masterIn, String baseUrl) {
-        PlayList playList = new PlayList(masterIn, baseUrl);
+    public static void masterParse(PlayList playList) {
+        String masterIn = playList.getM3u8();
         playList.setContentType(ContextType.MASTER);
         String[] items = masterIn.split("#");
         for (String item : items) {
@@ -60,11 +43,10 @@ public class Parser {
             }
             if (!"".equals(item)) playList.getHeaders().add("#" + item);
         }
-        return playList;
     }
 
-    public static PlayList mediaParse(String mediaIn, String baseUrl) throws URISyntaxException {
-        PlayList playList = new PlayList(mediaIn, baseUrl);
+    public static void mediaParse(PlayList playList) throws URISyntaxException {
+        String mediaIn = playList.getM3u8(), baseUrl = playList.getUrl();
         playList.setContentType(ContextType.MEDIA);
 
         String[] items = mediaIn.split("#");
@@ -93,7 +75,6 @@ public class Parser {
                 ads = false;
             }
         }
-        return playList;
     }
 
     public static String printPlaylist(PlayList playList) {
@@ -114,9 +95,9 @@ public class Parser {
             builder.append("#EXT-X-ENDLIST");
         }
         try {
-             byte[] bytes = builder.toString().getBytes("UTF-8");
-             return new String(bytes, "UTF-8");
-        }catch(UnsupportedEncodingException e) {
+            byte[] bytes = builder.toString().getBytes("UTF-8");
+            return new String(bytes, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             SpiderDebug.log(e.getLocalizedMessage());
             return "";

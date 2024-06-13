@@ -31,9 +31,8 @@ public class M3u8Fix {
         }
         SpiderDebug.log("okhttp3获取m3u8成功 url:" + url);
 
-        PlayList playList = Parser.parse(res, url);
+        PlayList playList = new PlayList(res, url);
         SpiderDebug.log("解析成功，url:" + url);
-        assert playList != null;
         if (playList.getContentType() == ContextType.MASTER) {
             url = new URI(url).resolve(playList.getSubUri().get(0)).toString();
             SpiderDebug.log("okhttp3获取子列表url:" + url);
@@ -62,7 +61,6 @@ public class M3u8Fix {
                 start = false;
             }
             segment.setDiscontinuity(start);
-
         }
 
         for (int i = 0; i < len; ) {
@@ -79,7 +77,7 @@ public class M3u8Fix {
 
     }
 
-    public static String incrementTsFilename(String filename) {
+    private static String incrementTsFilename(String filename) {
         Pattern pattern = Pattern.compile("(\\d+)(?=\\.ts$)");
         Matcher matcher = pattern.matcher(filename);
 
