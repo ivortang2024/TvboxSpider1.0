@@ -58,7 +58,6 @@ public class Mac10Api extends Spider {
                 classes.put(jObj);
             }
 
-
             JSONObject result = new JSONObject();
             result.put("class", classes);
             return result.toString();
@@ -140,8 +139,9 @@ public class Mac10Api extends Spider {
     @Override
     public String playerContent(String flag, String id, List<String> vipFlags) {
         try {
-            String url = flag != null && !flag.isEmpty() && id.endsWith(".m3u8") ?
-                    "http://127.0.0.1:9978/proxy?do=m3u8&url=".concat(URLEncoder.encode(id)) : id;
+            String url = id != null && !id.isEmpty() && id.endsWith(".m3u8") ?
+                    "http://127.0.0.1:9978/proxy?do=m3u8&flag=" + flag + "&url=".concat(URLEncoder.encode(id)) : id;
+
             JSONObject result = new JSONObject();
             result.put("parse", 0);
             result.put("playUrl", "");

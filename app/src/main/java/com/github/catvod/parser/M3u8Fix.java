@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,8 +24,8 @@ public class M3u8Fix {
 
     @TargetApi(Build.VERSION_CODES.N)
     public static String fixM3u8(String url, Map<String, String> params) throws URISyntaxException {
-
-        String res = OkHttpUtil.string(url, getHeaders(params));
+        SpiderDebug.log("params:" + params.toString());
+        String res = OkHttpUtil.string(url, null);
         if (res.length() == 0) {
             SpiderDebug.log("okhttp3获取m3u8失败 url:" + url);
             return "";
@@ -38,12 +39,31 @@ public class M3u8Fix {
             SpiderDebug.log("okhttp3获取子列表url:" + url);
             return fixM3u8(url, params);
         }
-        cutAds(playList.getTrackDataList(), url);
+
+        String flag = params.get("flag");
+        SpiderDebug.log("播放源：" + flag);
+
+        if ("snm3u8".equals(Objects.requireNonNull(flag))) {
+            cutHeaderAds(playList.getTrackDataList(), url);
+        } else {
+            cutAds(playList.getTrackDataList(), url);
+        }
         res = playList.toString();
-        SpiderDebug.log("打包成功：" + res);
+        SpiderDebug.log("打包成功,长度为"+ playList.getTrackDataList().size());
+        SpiderDebug.log(res);
         return res;
+    }
 
-
+    private static void cutHeaderAds(List<TrackData> mediaSegmentList, String url) {
+//        if (mediaSegmentList.size() > 10) mediaSegmentList.subList(0, 10).clear();
+        int len = mediaSegmentList.size();
+        if (len < 5) return;
+        int duration = 0;
+        while (true) {
+            duration += mediaSegmentList.get(0).getTrackInfo().duration;
+            if (duration > 22) break;
+            mediaSegmentList.remove(0);
+        }
     }
 
     public static void cutAds(List<TrackData> mediaSegmentList, String url) throws URISyntaxException {

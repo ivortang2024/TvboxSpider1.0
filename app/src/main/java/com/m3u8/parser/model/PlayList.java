@@ -38,7 +38,7 @@ public class PlayList {
     }
 
     public PlayList(String m3u8, String url) {
-        this.m3u8 = m3u8;
+        this.m3u8 = m3u8.replace("\r", "");
         this.url = url;
         parse();
     }

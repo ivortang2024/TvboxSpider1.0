@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import com.github.catvod.spider.AppYsV2;
 import com.github.catvod.spider.Mac10Api;
+import com.github.catvod.spider.Proxy;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 
@@ -25,10 +29,15 @@ public class MainActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Mac10Api appYsV2 = new Mac10Api();
-                appYsV2.init(null, "https://ff.118318.xyz/api.php/provide/vod");
-                String res = appYsV2.homeContent(true);
-                System.out.println(res);
+//                Mac10Api appYsV2 = new Mac10Api();
+//                appYsV2.init(null, "https://lz.118318.xyz/api.php/provide/vod/from/snm3u8");
+//                String res = appYsV2.homeContent(true);
+//                System.out.println(res);
+                Map<String,String> params = new HashMap<>();
+                params.put("url", "https://v5.mzxay.com/202406/24/sHjPLaSsdG7/video/index.m3u8");
+                params.put("flag", "snm3u8");
+                params.put("do", "m3u8");
+                Proxy.proxy(params);
             }
         }).start();
     }
