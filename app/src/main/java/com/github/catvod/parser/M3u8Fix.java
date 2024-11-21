@@ -13,6 +13,7 @@ import com.m3u8.parser.model.TrackData;
 import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,11 +46,13 @@ public class M3u8Fix {
 
         if ("snm3u8".equals(Objects.requireNonNull(flag))) {
             cutHeaderAds(playList.getTrackDataList(), url);
+        } else if ("ffm3u8".equals(Objects.requireNonNull(flag))) {
+            ffCutAds(playList.getTrackDataList(), url);
         } else {
             cutAds(playList.getTrackDataList(), url);
         }
         res = playList.toString();
-        SpiderDebug.log("打包成功,长度为"+ playList.getTrackDataList().size());
+        SpiderDebug.log("打包成功,长度为" + playList.getTrackDataList().size());
         SpiderDebug.log(res);
         return res;
     }
@@ -97,6 +100,45 @@ public class M3u8Fix {
             }
         }
         if (duration > 0.1) App.showToast(String.format("已删去广告%.1f秒.", duration));
+
+    }
+
+    /**
+     * 非凡去广告
+     *
+     * @param mediaSegmentList
+     * @param url
+     * @throws URISyntaxException
+     */
+    private static void ffCutAds(List<TrackData> mediaSegmentList, String url) throws URISyntaxException {
+        List<TrackData> ads = new ArrayList<>();
+        List<TrackData> tmpTracks = new ArrayList<>();
+        double durations = 0.0;
+        for (TrackData seg : mediaSegmentList) {
+            String uri = new URI(url).resolve(seg.getUri()).toString();
+            seg.setUri(uri);
+
+            if (seg.hasDiscontinuity()) {
+//                if (durations - 18.0 < 0.001 && durations - 18.0 > 0.0) {
+                if (durations > 17.999999 && durations < 18.300001) {
+                    ads.addAll(tmpTracks);
+                }
+                durations = 0.0;
+                tmpTracks.clear();
+            }
+
+            durations += seg.getTrackInfo().duration;
+            tmpTracks.add(seg);
+
+        }
+
+        durations = 0.0;
+        for (TrackData ad : ads) {
+            mediaSegmentList.remove(ad);
+            durations += ad.getTrackInfo().duration;
+        }
+
+        if (durations > 0.1) App.showToast(String.format("已删去广告%.1f秒.", durations));
 
     }
 

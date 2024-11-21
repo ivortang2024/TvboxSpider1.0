@@ -34,8 +34,8 @@ public class MainActivity extends Activity {
 //                String res = appYsV2.homeContent(true);
 //                System.out.println(res);
                 Map<String,String> params = new HashMap<>();
-                params.put("url", "https://v5.mzxay.com/202406/24/sHjPLaSsdG7/video/index.m3u8");
-                params.put("flag", "snm3u8");
+                params.put("url", "https://vip.ffzy-play10.com/20230219/28135_cd852348/index.m3u8");
+                params.put("flag", "ffm3u8");
                 params.put("do", "m3u8");
                 Proxy.proxy(params);
             }
