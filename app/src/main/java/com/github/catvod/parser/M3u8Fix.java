@@ -120,7 +120,7 @@ public class M3u8Fix {
 
             if (seg.hasDiscontinuity()) {
 //                if (durations - 18.0 < 0.001 && durations - 18.0 > 0.0) {
-                if (durations > 17.999999 && durations < 18.300001) {
+                if (durations > 17.0 && durations < 21.0) {
                     ads.addAll(tmpTracks);
                 }
                 durations = 0.0;
