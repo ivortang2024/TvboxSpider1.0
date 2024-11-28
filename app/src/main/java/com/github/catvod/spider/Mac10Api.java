@@ -60,6 +60,10 @@ public class Mac10Api extends Spider {
 
             JSONObject result = new JSONObject();
             result.put("class", classes);
+
+            res = OkHttpUtil.string(siteUrl + "?ac=detail", getHeaders(siteUrl));
+            resObj = new JSONObject(res);
+            result.put("list", resObj.getJSONArray("list"));
             return result.toString();
         } catch (Exception e) {
             SpiderDebug.log(e);
@@ -69,44 +73,44 @@ public class Mac10Api extends Spider {
 
     @Override
     public String homeVideoContent() {
-        try {
-            String url = siteUrl + "/api.php/provide/home_data?page=1&id=0";
-            JSONObject jsonObject = new JSONObject(OkHttpUtil.string(url, getHeaders(url)));
-            JSONArray jsonArray = new JSONArray();
-            if (jsonObject.has("tv")) {
-                JSONArray data = jsonObject.getJSONObject("tv").getJSONArray("data");
-                for (int i = 0; i < data.length(); i++) {
-                    jsonArray.put(data.getJSONObject(i));
-                }
-            }
-
-            if (jsonObject.has("video")) {
-                JSONArray vs = jsonObject.getJSONArray("video");
-                for (int i = 0; i < vs.length(); i++) {
-                    JSONArray data = vs.getJSONObject(i).getJSONArray("data");
-                    for (int j = 0; j < data.length(); j++) {
-                        jsonArray.put(data.getJSONObject(j));
-                    }
-                }
-            }
-
-            JSONArray videos = new JSONArray();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject vObj = jsonArray.getJSONObject(i);
-                JSONObject v = new JSONObject();
-                v.put("vod_id", vObj.getString("id"));
-                v.put("vod_name", vObj.getString("name"));
-                v.put("vod_pic", vObj.getString("img"));
-                v.put("vod_remarks", vObj.getString("qingxidu"));
-                videos.put(v);
-            }
-            JSONObject result = new JSONObject();
-            result.put("list", videos);
-            return result.toString();
-        } catch (Exception e) {
-            SpiderDebug.log(e);
-        }
-        return "";
+//        try {
+//            String url = siteUrl + "/api.php/provide/home_data?page=1&id=0";
+//            JSONObject jsonObject = new JSONObject(OkHttpUtil.string(url, getHeaders(url)));
+//            JSONArray jsonArray = new JSONArray();
+//            if (jsonObject.has("tv")) {
+//                JSONArray data = jsonObject.getJSONObject("tv").getJSONArray("data");
+//                for (int i = 0; i < data.length(); i++) {
+//                    jsonArray.put(data.getJSONObject(i));
+//                }
+//            }
+//
+//            if (jsonObject.has("video")) {
+//                JSONArray vs = jsonObject.getJSONArray("video");
+//                for (int i = 0; i < vs.length(); i++) {
+//                    JSONArray data = vs.getJSONObject(i).getJSONArray("data");
+//                    for (int j = 0; j < data.length(); j++) {
+//                        jsonArray.put(data.getJSONObject(j));
+//                    }
+//                }
+//            }
+//
+//            JSONArray videos = new JSONArray();
+//            for (int i = 0; i < jsonArray.length(); i++) {
+//                JSONObject vObj = jsonArray.getJSONObject(i);
+//                JSONObject v = new JSONObject();
+//                v.put("vod_id", vObj.getString("id"));
+//                v.put("vod_name", vObj.getString("name"));
+//                v.put("vod_pic", vObj.getString("img"));
+//                v.put("vod_remarks", vObj.getString("qingxidu"));
+//                videos.put(v);
+//            }
+//            JSONObject result = new JSONObject();
+//            result.put("list", videos);
+//            return result.toString();
+//        } catch (Exception e) {
+//            SpiderDebug.log(e);
+//        }
+        return homeContent(true);
     }
 
     @Override

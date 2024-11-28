@@ -5,6 +5,7 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public abstract class Spider {
      * @param filter 是否开启筛选
      * @return
      */
-    public String homeContent(boolean filter) {
+    public String homeContent(boolean filter) throws IOException {
         return "";
     }
 

@@ -46,5 +46,7 @@ dependencies {
     annotationProcessor "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttp_version"
     implementation 'io.lindstrom:m3u8-parser:0.28'
     implementation files('libs/conscrypt-android-2.5.2.aar')
-
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+//    compileOnly 'org.projectlombok:lombok:1.18.36'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
