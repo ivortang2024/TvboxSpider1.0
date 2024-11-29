@@ -1,215 +1,212 @@
 {
-  "class": [
-    {
-      "type_id": 6,
-      "type_pid": 1,
-      "type_name": "动作片"
-    },
-    {
-      "type_id": 7,
-      "type_pid": 1,
-      "type_name": "喜剧片"
-    },
-    {
-      "type_id": 8,
-      "type_pid": 1,
-      "type_name": "爱情片"
-    },
-    {
-      "type_id": 9,
-      "type_pid": 1,
-      "type_name": "科幻片"
-    },
-    {
-      "type_id": 10,
-      "type_pid": 1,
-      "type_name": "恐怖片"
-    },
-    {
-      "type_id": 11,
-      "type_pid": 1,
-      "type_name": "剧情片"
-    },
-    {
-      "type_id": 12,
-      "type_pid": 1,
-      "type_name": "战争片"
-    },
-    {
-      "type_id": 13,
-      "type_pid": 2,
-      "type_name": "国产剧"
-    },
-    {
-      "type_id": 14,
-      "type_pid": 2,
-      "type_name": "香港剧"
-    },
-    {
-      "type_id": 15,
-      "type_pid": 2,
-      "type_name": "韩国剧"
-    },
-    {
-      "type_id": 16,
-      "type_pid": 2,
-      "type_name": "欧美剧"
-    },
-    {
-      "type_id": 20,
-      "type_pid": 1,
-      "type_name": "记录片"
-    },
-    {
-      "type_id": 21,
-      "type_pid": 2,
-      "type_name": "台湾剧"
-    },
-    {
-      "type_id": 22,
-      "type_pid": 2,
-      "type_name": "日本剧"
-    },
-    {
-      "type_id": 23,
-      "type_pid": 2,
-      "type_name": "海外剧"
-    },
-    {
-      "type_id": 24,
-      "type_pid": 2,
-      "type_name": "泰国剧"
-    },
-    {
-      "type_id": 25,
-      "type_pid": 3,
-      "type_name": "大陆综艺"
-    },
-    {
-      "type_id": 26,
-      "type_pid": 3,
-      "type_name": "港台综艺"
-    },
-    {
-      "type_id": 27,
-      "type_pid": 3,
-      "type_name": "日韩综艺"
-    },
-    {
-      "type_id": 28,
-      "type_pid": 3,
-      "type_name": "欧美综艺"
-    },
-    {
-      "type_id": 29,
-      "type_pid": 4,
-      "type_name": "国产动漫"
-    },
-    {
-      "type_id": 30,
-      "type_pid": 4,
-      "type_name": "日韩动漫"
-    },
-    {
-      "type_id": 31,
-      "type_pid": 4,
-      "type_name": "欧美动漫"
-    },
-    {
-      "type_id": 32,
-      "type_pid": 4,
-      "type_name": "港台动漫"
-    },
-    {
-      "type_id": 33,
-      "type_pid": 4,
-      "type_name": "海外动漫"
-    },
-    {
-      "type_id": 34,
-      "type_pid": 1,
-      "type_name": "伦理片"
-    },
-    {
-      "type_id": 36,
-      "type_pid": 2,
-      "type_name": "短剧"
-    }
-  ],
+  "code": 1,
+  "msg": "\u6570\u636e\u5217\u8868",
+  "page": 1,
+  "pagecount": 1,
+  "limit": 20,
+  "total": 4,
   "list": [
     {
-      "vod_id": 74508,
-      "type_id": 36,
-      "type_id_1": 2,
-      "group_id": 0,
-      "vod_name": "正妻的愤怒",
-      "vod_sub": "",
-      "vod_en": "zhengqidefennu",
-      "vod_status": 1,
-      "vod_letter": "Z",
-      "vod_color": "",
-      "vod_tag": "",
-      "vod_class": "短剧",
-      "vod_pic": "https:\/\/img.ffzy888.com\/upload\/vod\/20241128-1\/65f6b4a2a32528cad038a31e49761f32.jpg",
-      "vod_pic_thumb": "",
-      "vod_pic_slide": "",
-      "vod_pic_screenshot": "",
-      "vod_actor": "",
-      "vod_director": "",
-      "vod_writer": "",
-      "vod_behind": "",
-      "vod_blurb": "",
-      "vod_remarks": "已完结",
-      "vod_pubdate": "",
-      "vod_total": 0,
-      "vod_serial": "",
-      "vod_tv": "",
-      "vod_weekday": "",
-      "vod_area": "大陆",
-      "vod_lang": "国语",
-      "vod_year": "2024",
-      "vod_version": "",
-      "vod_state": "",
-      "vod_author": "",
-      "vod_jumpurl": "",
-      "vod_tpl": "",
-      "vod_tpl_play": "",
-      "vod_tpl_down": "",
-      "vod_isend": 0,
-      "vod_lock": 0,
-      "vod_level": 0,
-      "vod_copyright": 0,
-      "vod_points": 0,
-      "vod_points_play": 0,
-      "vod_points_down": 0,
-      "vod_hits": 0,
-      "vod_hits_day": 0,
-      "vod_hits_week": 0,
-      "vod_hits_month": 0,
-      "vod_duration": "",
-      "vod_up": 0,
-      "vod_down": 0,
-      "vod_score": "0.0",
-      "vod_score_all": 0,
-      "vod_score_num": 0,
-      "vod_time": "2024-11-28 14:36:50",
-      "vod_time_add": 1732775810,
-      "vod_time_hits": 0,
-      "vod_time_make": 0,
-      "vod_trysee": 0,
-      "vod_douban_id": 0,
-      "vod_douban_score": "0.0",
-      "vod_reurl": "",
-      "vod_rel_vod": "",
-      "vod_rel_art": "",
-      "vod_pwd": "",
-      "vod_pwd_url": "",
-      "vod_pwd_play": "",
-      "vod_pwd_play_url": "",
-      "vod_pwd_down": "",
-      "vod_pwd_down_url": "",
-      "vod_content": "",
-      "vod_play_from": "ffm3u8",
-      "vod_play_server": "no",
-      "vod_play_note": "",
-      "vod_play_url": "第01集$https:\/\/vip.ffzy-play8.com\/20241112\/208061_55bc2ab9\/index.m3u8#第02集$https:\/\/vip.ffzy-play8.com\/20241112\/208057_9a378350\/index.m3u8#第03集$https:\/\/vip.ffzy-play8.com\/20241112\/208060_9254144e\/index.m3u8#第04集$https:\/\/vip.ffzy-play8.com\/20241112\/208056_a394b8f7\/index.m3u8#第05集$https:\/\/vip.ffzy-play8.com\/20241112\/208058_63ede11e\/index.m3u8#第06集$https:\/\/vip.ffzy-play8.com\/20241112\/208059_24b9c0cd\/index.m3u8#第07集$https:\/\/vip.ffzy-play8.com\/20241112\/208055_c7b40e6a\/index.m3u8#第08集$https:\/\/vip.ffzy-play8.com\/20241112\/208052_da1efd4e\/index.m3u8#第09集$https:\/\/vip.ffzy-play8.com\/20241112\/208054_e87518db\/index.m3u8#第10集$https:\/\/vip.ffzy-play8.com\/20241112\/208053_2aaa51d6\/index.m3u8#第11集$https:\/\/vip.ffzy-play8.com\/20241112\/208051_aefb1567\/index.m3u8#第12集$https:\/\/vip.ffzy-play8.com\/20241112\/208050_24c9bfe1\/index.m3u8#第13集$https:\/\/vip.ffzy-play8.com\/20241112\/208049_c54a35d3\/index.m3u8#第14集$https:\/\/vip.ffzy-play8.com\/20241112\/208047_b4454f75\/index.m3u8#第15集$https:\/\/vip.ffzy-play8.com\/20241112\/208048_8b28017a\/index.m3u8#第16集$https:\/\/vip.ffzy-play8.com\/20241112
+      "vod_id": "53981",
+      "vod_name": "\u5723\u7ea6\u4e4b\u5916\uff1a\u6469\u897f\u7684\u6545\u4e8b",
+      "type_id": "20",
+      "type_name": "\u8bb0\u5f55\u7247",
+      "vod_en": "shengyuezhiwaimoxidegushi",
+      "vod_time": "2024-04-05 15:35:17",
+      "vod_remarks": "\u51683\u96c6",
+      "vod_play_from": "1080zyk"
+    },
+    {
+      "vod_id": "13666",
+      "vod_name": "\u5217\u5b81\u683c\u52d2\u725b\u4ed4\u642d\u6469\u897f",
+      "type_id": "6",
+      "type_name": "\u559c\u5267\u7247",
+      "vod_en": "lieninggeleniuzidamoxi",
+      "vod_time": "2023-08-29 15:35:00",
+      "vod_remarks": "HD\u4e2d\u5b57\u7248",
+      "vod_play_from": "1080zyk"
+    },
+    {
+      "vod_id": "44522",
+      "vod_name": "\u6469\u897f\u5bc6\u7801",
+      "type_id": "12",
+      "type_name": "\u56fd\u4ea7\u5267",
+      "vod_en": "moximima",
+      "vod_time": "2023-08-06 20:49:38",
+      "vod_remarks": "\u516830\u96c6",
+      "vod_play_from": "1080zyk"
+    },
+    {
+      "vod_id": "35913",
+      "vod_name": "\u5e73\u539f\u4e0a\u7684\u6469\u897f",
+      "type_id": "12",
+      "type_name": "\u56fd\u4ea7\u5267",
+      "vod_en": "pingyuanshangdemoxi",
+      "vod_time": "2023-01-19 19:45:28",
+      "vod_remarks": "\u51686\u96c6",
+      "vod_play_from": "1080zyk"
+    }
+  ],
+  "class": [
+    {
+      "type_id": "1",
+      "type_name": "\u7535\u5f71"
+    },
+    {
+      "type_id": "2",
+      "type_name": "\u8fde\u7eed\u5267"
+    },
+    {
+      "type_id": "3",
+      "type_name": "\u7efc\u827a"
+    },
+    {
+      "type_id": "4",
+      "type_name": "\u52a8\u6f2b"
+    },
+    {
+      "type_id": "5",
+      "type_name": "\u52a8\u4f5c\u7247"
+    },
+    {
+      "type_id": "6",
+      "type_name": "\u559c\u5267\u7247"
+    },
+    {
+      "type_id": "7",
+      "type_name": "\u7231\u60c5\u7247"
+    },
+    {
+      "type_id": "8",
+      "type_name": "\u79d1\u5e7b\u7247"
+    },
+    {
+      "type_id": "9",
+      "type_name": "\u6050\u6016\u7247"
+    },
+    {
+      "type_id": "10",
+      "type_name": "\u5267\u60c5\u7247"
+    },
+    {
+      "type_id": "11",
+      "type_name": "\u6218\u4e89\u7247"
+    },
+    {
+      "type_id": "12",
+      "type_name": "\u56fd\u4ea7\u5267"
+    },
+    {
+      "type_id": "13",
+      "type_name": "\u53f0\u6e7e\u5267"
+    },
+    {
+      "type_id": "14",
+      "type_name": "\u97e9\u56fd\u5267"
+    },
+    {
+      "type_id": "15",
+      "type_name": "\u6b27\u7f8e\u5267"
+    },
+    {
+      "type_id": "16",
+      "type_name": "\u9999\u6e2f\u5267"
+    },
+    {
+      "type_id": "17",
+      "type_name": "\u6cf0\u56fd\u5267"
+    },
+    {
+      "type_id": "18",
+      "type_name": "\u65e5\u672c\u5267"
+    },
+    {
+      "type_id": "19",
+      "type_name": "\u798f\u5229"
+    },
+    {
+      "type_id": "20",
+      "type_name": "\u8bb0\u5f55\u7247"
+    },
+    {
+      "type_id": "41",
+      "type_name": "\u52a8\u753b\u7247"
+    },
+    {
+      "type_id": "54",
+      "type_name": "\u6d77\u5916\u5267"
+    },
+    {
+      "type_id": "61",
+      "type_name": "\u502b\u7406\u7247"
+    },
+    {
+      "type_id": "62",
+      "type_name": "\u5927\u9646\u7efc\u827a"
+    },
+    {
+      "type_id": "63",
+      "type_name": "\u6e2f\u53f0\u7efc\u827a"
+    },
+    {
+      "type_id": "64",
+      "type_name": "\u65e5\u97e9\u7efc\u827a"
+    },
+    {
+      "type_id": "65",
+      "type_name": "\u6b27\u7f8e\u7efc\u827a"
+    },
+    {
+      "type_id": "66",
+      "type_name": "\u56fd\u4ea7\u52a8\u6f2b"
+    },
+    {
+      "type_id": "67",
+      "type_name": "\u65e5\u97e9\u52a8\u6f2b"
+    },
+    {
+      "type_id": "68",
+      "type_name": "\u6b27\u7f8e\u52a8\u6f2b"
+    },
+    {
+      "type_id": "69",
+      "type_name": "\u6e2f\u53f0\u52a8\u6f2b"
+    },
+    {
+      "type_id": "70",
+      "type_name": "\u6d77\u5916\u52a8\u6f2b"
+    },
+    {
+      "type_id": "78",
+      "type_name": "\u641e\u7b11"
+    },
+    {
+      "type_id": "79",
+      "type_name": "\u97f3\u4e50"
+    },
+    {
+      "type_id": "80",
+      "type_name": "\u5f71\u89c6"
+    },
+    {
+      "type_id": "81",
+      "type_name": "\u6c7d\u8f66"
+    },
+    {
+      "type_id": "83",
+      "type_name": "\u77ed\u5267\u5927\u5168"
+    },
+    {
+      "type_id": "92",
+      "type_name": "\u9884\u544a\u7247"
+    },
+    {
+      "type_id": "93",
+      "type_name": "\u9884\u544a\u7247"
+    },
+    {
+      "type_id": "94",
+      "type_name": "\u4f53\u80b2"
+    }
+  ]
+}

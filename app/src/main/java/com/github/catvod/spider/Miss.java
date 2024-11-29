@@ -266,8 +266,8 @@ public class Miss extends Spider {
                 }
             }
 
-            String vodPlayUrl = String.format("直连$%s%s/playlist.m3u8#" +
-                            "代理1$%s%s/playlist.m3u8#" +
+            String vodPlayUrl = String.format("直连$%s%s/playlist.m3u8$$$" +
+                            "代理1$%s%s/playlist.m3u8$$$" +
                             "代理2$%s%s/playlist.m3u8",
                     "https://surrit.com/", segments[3],
                     "https://miss.118318.xyz/", segments[3],
@@ -293,7 +293,7 @@ public class Miss extends Spider {
             detail.put("vod_year", vodYear);
             detail.put("vod_actor", actors.toString());
             detail.put("vod_remarks", types.toString());
-            detail.put("vod_play_from", "MissAV");
+            detail.put("vod_play_from", "直连$$$代理1$$$代理2");
             detail.put("vod_play_url", vodPlayUrl);
             detail.put("vod_director", issuer);
 
