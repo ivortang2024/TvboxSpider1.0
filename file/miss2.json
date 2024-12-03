@@ -5,7 +5,7 @@
       "key": "MissAV",
       "name": "MissAV",
       "type": 1,
-      "api": "https://miss-api.118318.xyz/api/",
+      "api": "https://miss-api.118318.xyz/api",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
