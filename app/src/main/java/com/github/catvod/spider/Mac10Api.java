@@ -26,6 +26,48 @@ import java.util.stream.IntStream;
  * Author: 群友 不负此生
  */
 public class Mac10Api extends Spider {
+//    private final static String filtersStr = " {\n" +
+//            "    \"2\": [\n" +
+//            "      {\n" +
+//            "        \"key\": \"class\",\n" +
+//            "        \"name\": \"类型\",\n" +
+//            "        \"value\": [\n" +
+//            "          {\n" +
+//            "            \"n\": \"全部\",\n" +
+//            "            \"v\": \"\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"国产剧\",\n" +
+//            "            \"v\": \"13\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"香港剧\",\n" +
+//            "            \"v\": \"香港剧\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"韩国剧\",\n" +
+//            "            \"v\": \"韩国剧\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"欧美剧\",\n" +
+//            "            \"v\": \"欧美剧\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"台湾剧\",\n" +
+//            "            \"v\": \"台湾剧\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"日本剧\",\n" +
+//            "            \"v\": \"日本剧\"\n" +
+//            "          },\n" +
+//            "          {\n" +
+//            "            \"n\": \"泰国剧\",\n" +
+//            "            \"v\": \"泰国剧\"\n" +
+//            "          }\n" +
+//            "        ]\n" +
+//            "      }\n" +
+//            "    ]\n" +
+//            "  }";
 
     private String siteUrl = "";
 
@@ -69,6 +111,9 @@ public class Mac10Api extends Spider {
             JSONObject result = new JSONObject();
             result.put("class", classes);
 
+//            JSONObject filters = new JSONObject(filtersStr);
+//            result.put("filters", filters);
+
             res = OkHttpUtil.string(siteUrl + "?ac=detail", getHeaders(siteUrl));
             resObj = new JSONObject(res);
             result.put("list", resObj.getJSONArray("list"));
@@ -87,7 +132,7 @@ public class Mac10Api extends Spider {
 
     @Override
     public String categoryContent(String tid, String pg, boolean filter, HashMap<String, String> extend) {
-        SpiderDebug.log("进入categoryContent");
+        SpiderDebug.log("进入categoryContent, tid=" + tid + ", pg=" + pg + extend.toString());
         try {
             String url = siteUrl + "?ac=detail&pg=" + pg + "&t=" + tid;
 

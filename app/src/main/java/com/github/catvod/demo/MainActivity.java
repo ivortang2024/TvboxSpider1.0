@@ -38,9 +38,10 @@ public class MainActivity extends Activity {
 
     private void testMac10Api(){
         Mac10Api mac10Api = new Mac10Api();
-//        mac10Api.init(null, "http://api.ffzyapi.com/api.php/provide/vod/from/ffm3u8");
-        mac10Api.init(null, "https://api.1080zyku.com/inc/api_mac10.php");
-        String res = mac10Api.searchContent("摩西", false, "1");
+        mac10Api.init(null, "http://api.ffzyapi.com/api.php/provide/vod/from/ffm3u8");
+//        mac10Api.init(null, "https://api.1080zyku.com/inc/api_mac10.php");
+//        String res = mac10Api.searchContent("摩西", false, "1");
+        String res = mac10Api.homeContent(true);
         SpiderDebug.log(res);
     }
 }
