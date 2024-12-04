@@ -10,6 +10,34 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://missav.com/cn/"
+    },
+    {
+      "key": "MissAV-API",
+      "name": "MissAV-API",
+      "type": 1,
+      "api": "https://miss-api.118318.xyz/api",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 2,
+      "style": {
+        "type": "rect",
+        "ratio": 1.49
+      }
+    },
+    {
+      "key": "MissAV-API-CF",
+      "name": "MissAV-API-CF",
+      "type": 1,
+      "api": "https://miss-api-cf.118318.xyz/api",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 2,
+      "style": {
+        "type": "rect",
+        "ratio": 1.49
+      }
     }
   ],
   "rules": [
