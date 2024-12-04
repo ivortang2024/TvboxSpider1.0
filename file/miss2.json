@@ -7,7 +7,12 @@
       "api": "https://miss-api.118318.xyz/api",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 1
+      "filterable": 1,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.49
+      }
     }
   ]
 }
